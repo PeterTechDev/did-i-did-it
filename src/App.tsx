@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { TaskCard } from "./components/TaskCard";
 import { AddTaskModal } from "./components/AddTaskModal";
+import { Header } from "./components/Header";
 import {
   loadTasksFromLocalStorage,
   saveTasksToLocalStorage,
 } from "./utils/localStorageHelpers";
 import { Container } from "./styles/Layout.styles";
-import { Task } from "./types/TaskPops";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles/GlobalStyles";
+import { Task } from "./types/TaskPops";
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -54,8 +55,7 @@ export function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div>
-        <h1 style={{ textAlign: "center" }}>Daily reminder</h1>
-        <button onClick={() => setIsModalOpen(true)}>+ Add Task</button>
+        <Header onOpenModal={() => setIsModalOpen(true)} />
 
         <Container>
           {tasks.map((task) => (

@@ -28,8 +28,13 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
       "take vitamins",
       "feed the cat",
       "lock the door",
-      "complete Duolingo lesson",
+      "complete a Duolingo lesson",
       "exercise for 30 minutes",
+      "water the plants",
+      "read a book",
+      "meditate for 10 minutes",
+      "write in journal",
+      "plan tomorrow's tasks",
     ];
     const interval = setInterval(() => {
       const randomPlaceholder =
@@ -73,7 +78,8 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
           placeholder={placeholder}
         />
         <InputHint>
-          Describe the task as an action. E.g., "take vitamins", "lock the door"
+          Describe the task as an action. Example: "take vitamins", "lock the
+          door"
         </InputHint>
         {error && <ErrorText>{error}</ErrorText>}
 

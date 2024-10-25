@@ -27,7 +27,7 @@ export const Card = styled.div<{ completed: boolean }>`
 `;
 
 export const TaskText = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 8px;
 `;
 
