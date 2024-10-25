@@ -6,6 +6,7 @@ import {
   TimeText,
   Button,
   Footer,
+  CancelButton,
 } from "./TaskCard.styles";
 
 interface TaskCardProps {
@@ -13,6 +14,7 @@ interface TaskCardProps {
   completed: boolean;
   completedTime?: string;
   onComplete: () => void;
+  onUndo: () => void;
 }
 
 export function TaskCard({
@@ -20,7 +22,14 @@ export function TaskCard({
   completed,
   completedTime,
   onComplete,
+  onUndo,
 }: TaskCardProps) {
+  const handleUndo = () => {
+    if (window.confirm("Are you sure you want to undo this task?")) {
+      onUndo();
+    }
+  };
+
   return (
     <Card completed={completed}>
       <TaskText>Did I {task}?</TaskText>
@@ -29,9 +38,12 @@ export function TaskCard({
 
       <Footer>
         {completed ? (
-          <CompletionTime>
-            <TimeText>Completed at {completedTime}</TimeText>
-          </CompletionTime>
+          <>
+            <CompletionTime>
+              <TimeText>Completed at {completedTime}</TimeText>
+            </CompletionTime>
+            <CancelButton onClick={handleUndo}>X</CancelButton>
+          </>
         ) : (
           <Button onClick={onComplete}>Mark as Done</Button>
         )}

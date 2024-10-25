@@ -51,6 +51,20 @@ export function App() {
     );
   };
 
+  const handleUndoTask = (taskId: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId
+          ? {
+              ...task,
+              completed: false,
+              completedTime: undefined,
+            }
+          : task
+      )
+    );
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -65,6 +79,7 @@ export function App() {
               completed={task.completed}
               completedTime={task.completedTime}
               onComplete={() => handleCompleteTask(task.id)}
+              onUndo={() => handleUndoTask(task.id)}
             />
           ))}
         </Container>
