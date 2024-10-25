@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/addtaskmodal/index.tsx","./src/components/taskcard/taskcard.styles.ts","./src/components/taskcard/index.tsx","./src/context/taskcontext.tsx","./src/styles/globalstyles.ts","./src/styles/layout.styles.ts","./src/types/taskpops.ts","./src/utils/localstoragehelpers.ts"],"version":"5.6.3"}
