@@ -1,51 +1,38 @@
-# React + TypeScript + Vite
+# Did I Did It?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Did I Did It?** is a simple task-tracking web app to help you track daily tasks and know whether or not you’ve completed them. The app features a responsive design, allows adding new tasks, marking them as complete, and displaying the time when each task was completed.
 
-Currently, two official plugins are available:
+### Live Demo:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can check out the live demo [here](https://petertechdev.github.io/did-i-did-it/).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Add New Tasks**: Add tasks that you want to track during the day (e.g., "Did I take my vitamins?").
+- **Mark Tasks as Done**: Once a task is completed, mark it as done with a single click.
+- **Time Stamping**: See the exact time when a task was completed.
+- **Responsive Design**: Mobile-first design that adapts to various screen sizes, supporting up to 5 task cards per row on larger screens.
+- **Task Reset at Midnight**: Tasks reset automatically every day at midnight to track your daily progress.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Technologies Used
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **React** with **TypeScript**
+- **Vite** for project setup and development
+- **Styled-Components** for styling
+- **Local Storage** to persist task data between sessions
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-"# did-i-did-it" 
+---
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/did-i-did-it.git
+   ```
