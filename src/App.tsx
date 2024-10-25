@@ -7,6 +7,8 @@ import {
 } from "./utils/localStorageHelpers";
 import { Container } from "./styles/Layout.styles";
 import { Task } from "./types/TaskPops";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles, theme } from "./styles/GlobalStyles";
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -49,29 +51,32 @@ export function App() {
   };
 
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>Daily reminder</h1>
-      <button onClick={() => setIsModalOpen(true)}>+ Add Task</button>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div>
+        <h1 style={{ textAlign: "center" }}>Daily reminder</h1>
+        <button onClick={() => setIsModalOpen(true)}>+ Add Task</button>
 
-      <Container>
-        {tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            task={task.name}
-            completed={task.completed}
-            completedTime={task.completedTime}
-            onComplete={() => handleCompleteTask(task.id)}
+        <Container>
+          {tasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              task={task.name}
+              completed={task.completed}
+              completedTime={task.completedTime}
+              onComplete={() => handleCompleteTask(task.id)}
+            />
+          ))}
+        </Container>
+
+        {isModalOpen && (
+          <AddTaskModal
+            onAddTask={handleAddTask}
+            onClose={() => setIsModalOpen(false)}
           />
-        ))}
-      </Container>
-
-      {isModalOpen && (
-        <AddTaskModal
-          onAddTask={handleAddTask}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
-    </div>
+        )}
+      </div>
+    </ThemeProvider>
   );
 }
 

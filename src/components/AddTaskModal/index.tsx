@@ -1,5 +1,14 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from "react";
+import {
+  ModalBackground,
+  ModalContent,
+  ButtonContainer,
+  Input,
+  Button,
+  Title,
+  InputHint,
+  ErrorText,
+} from "./AddTaskModal.styles";
 
 interface AddTaskModalProps {
   onAddTask: (task: string) => void;
@@ -8,57 +17,73 @@ interface AddTaskModalProps {
 
 export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   const [taskName, setTaskName] = useState("");
+  const [error, setError] = useState("");
+  const [placeholder, setPlaceholder] = useState(
+    "take vitamins, duolingo lesson..."
+  );
+
+  // Dynamic placeholder suggestions
+  useEffect(() => {
+    const placeholders = [
+      "take vitamins",
+      "feed the cat",
+      "lock the door",
+      "complete Duolingo lesson",
+      "exercise for 30 minutes",
+    ];
+    const interval = setInterval(() => {
+      const randomPlaceholder =
+        placeholders[Math.floor(Math.random() * placeholders.length)];
+      setPlaceholder(randomPlaceholder);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = () => {
-    if (taskName) {
-      onAddTask(taskName);
-      setTaskName(""); // Reset the input field
-      onClose(); // Close the modal
+    if (!taskName || taskName.trim().length < 3) {
+      setError("Please enter a more descriptive task.");
+      return;
+    }
+    onAddTask(taskName);
+    setTaskName("");
+    setError("");
+    onClose();
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSubmit();
     }
   };
 
   return (
     <ModalBackground>
       <ModalContent>
-        <h2>Add a New Task</h2>
-        <input
+        <Title>Set a reminder to...</Title>
+
+        <Input
           type="text"
           value={taskName}
-          onChange={(e) => setTaskName(e.target.value)}
-          placeholder="Task Name"
+          onChange={(e) => {
+            setTaskName(e.target.value);
+            setError("");
+          }}
+          onKeyPress={handleKeyPress}
+          placeholder={placeholder}
         />
+        <InputHint>
+          Describe the task as an action. E.g., "take vitamins", "lock the door"
+        </InputHint>
+        {error && <ErrorText>{error}</ErrorText>}
+
         <ButtonContainer>
-          <button onClick={handleSubmit}>Add Task</button>
-          <button onClick={onClose}>Cancel</button>
+          <Button onClick={onClose}>Cancel</Button>
+          <Button primary onClick={handleSubmit}>
+            Add
+          </Button>
         </ButtonContainer>
       </ModalContent>
     </ModalBackground>
   );
 }
-
-// Styled-components
-const ModalBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ModalContent = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-`;
-
-const ButtonContainer = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
-`;
