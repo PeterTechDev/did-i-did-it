@@ -13,6 +13,7 @@ export const Card = styled.div<{ completed: boolean }>`
   height: 160px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     height: 150px;
@@ -21,10 +22,9 @@ export const Card = styled.div<{ completed: boolean }>`
   }
 
   @media (min-width: 1024px) {
-    width: 24%;
     height: 120px;
 
-    width: 280px;
+    width: 260px;
   }
 `;
 
@@ -47,7 +47,7 @@ export const TimeText = styled.p`
   margin: 0;
   font-size: 12px;
   color: #ffffff;
-  margin-top: 20px;
+  margin-bottom: 10px;
 `;
 
 export const Button = styled.button`
@@ -55,8 +55,8 @@ export const Button = styled.button`
   background-color: #fb5607;
   color: #ffffff;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 
   &:hover {
     background-color: #ff006e;
@@ -109,5 +109,7 @@ export const Footer = styled.div`
   align-items: center;
   bottom: 0;
   width: 100%;
+  position: absolute;
+  left: 0;
   justify-self: flex-end;
 `;
