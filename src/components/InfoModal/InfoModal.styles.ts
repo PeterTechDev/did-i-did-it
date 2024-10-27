@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const InfoModalContainer = styled.div`
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 80%;
   max-width: 400px;
-  background-color: #ffffff;
+  background-color: #333333;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -15,17 +15,18 @@ export const InfoModalContainer = styled.div`
 
   h2 {
     margin-top: 0;
-    color: #333;
+    color: #ffbe0b;
     font-size: 24px;
-    text-align: center;
+    text-align: left;
   }
 
   p {
-    color: #555;
+    color: #ffff;
     font-size: 16px;
     line-height: 1.4;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
+    line-height: 1.5;
   }
 
   button {

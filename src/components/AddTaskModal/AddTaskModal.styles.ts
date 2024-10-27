@@ -1,4 +1,3 @@
-// src/components/AddTaskModal.styles.ts
 import styled from "styled-components";
 
 export const ModalBackground = styled.div`

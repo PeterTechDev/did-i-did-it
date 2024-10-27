@@ -88,6 +88,7 @@ export default function App() {
             display: "flex",
             flexDirection: "row-reverse",
             alignItems: "center",
+            justifyContent: "center",
             gap: "1rem",
           }}
         >

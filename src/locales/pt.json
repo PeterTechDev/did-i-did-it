@@ -17,7 +17,7 @@
   },
   "about": {
     "openButton": "Sobre o App",
-    "title": "Sobre o Lembrete Diário",
+    "title": "Sobre o Checklist Diário",
     "purpose": "Este aplicativo ajuda você a acompanhar tarefas diárias simples, lembrando você de completá-las todos os dias.",
     "resetInfo": "Todas as tarefas serão reiniciadas automaticamente à meia-noite, para que você possa começar o próximo dia com um novo checklist.",
     "closeButton": "Fechar"
