@@ -1,4 +1,3 @@
-// src/components/TaskCard.styles.ts
 import styled from "styled-components";
 
 export const Card = styled.div<{ completed: boolean }>`
@@ -41,12 +40,14 @@ export const Status = styled.p<{ completed: boolean }>`
   color: ${({ completed }) => (completed ? "#FFBE0B" : "#FF006E")};
 `;
 
-export const CompletionTime = styled.div``;
+export const CompletionTime = styled.div`´
+`;
 
 export const TimeText = styled.p`
   margin: 0;
   font-size: 12px;
   color: #ffffff;
+  margin-top: 20px;
 `;
 
 export const Button = styled.button`
@@ -79,8 +80,6 @@ export const SettingsButton = styled.button`
   border: none;
   font-size: 18px;
   cursor: pointer;
-  outline: none;
-  border: none;
 `;
 
 export const DropdownMenu = styled.div`
@@ -105,7 +104,6 @@ export const DropdownOption = styled.div`
 `;
 
 export const Footer = styled.div`
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
