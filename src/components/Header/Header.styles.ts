@@ -5,9 +5,9 @@ export const HeaderContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background-color: #242424;
-  margin: 5px auto 20px auto;
+  margin: 5px auto 0 auto;
   width: 320px;
 
   @media (min-width: 768px) {

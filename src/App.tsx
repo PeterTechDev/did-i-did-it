@@ -90,6 +90,7 @@ export default function App() {
             alignItems: "center",
             justifyContent: "center",
             gap: "1rem",
+            marginBottom: "3rem",
           }}
         >
           <AddTaskButton onClick={() => setIsModalOpen(true)} />
