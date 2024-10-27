@@ -1,13 +1,13 @@
 {
   "modal": {
-    "title": "Lembrete Diário",
+    "title": "Checklist Diário",
     "cancel": "Cancelar",
     "add": "Adicionar",
     "inputHint": "Descreva a tarefa como uma ação. Ex.: 'tomar vitaminas'",
     "undoConfirmation": "Tem certeza de que deseja desfazer esta tarefa?",
     "deleteConfirmation": "Tem certeza de que deseja excluir esta tarefa?",
     "didI": "Já lembrei de {{task}}?",
-    "titleAddNewTask": "Eu preciso lembrar de...",
+    "titleAddNewTask": "Eu preciso lembrar de:",
     "yes": "Sim",
     "no": "Não",
     "undo": "Desfazer",

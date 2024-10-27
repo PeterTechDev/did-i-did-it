@@ -22,7 +22,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   const [taskName, setTaskName] = useState("");
   const [error, setError] = useState("");
   const [placeholder, setPlaceholder] = useState("");
-  const maxLength = 20;
+  const maxLength = 21;
 
   // Sugestões de placeholder dinâmico
   useEffect(() => {
@@ -64,6 +64,14 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
     onClose();
   };
 
+  // Função para detectar o Enter pressionado
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <ModalBackground>
       <ModalContent>
@@ -78,6 +86,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
           }}
           placeholder={placeholder}
           maxLength={maxLength}
+          onKeyDown={handleKeyPress} // Detecta o Enter
         />
         <CharacterCount>
           {taskName.length}/{maxLength}
