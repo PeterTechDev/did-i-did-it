@@ -85,8 +85,8 @@ export const SettingsButton = styled.button`
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 25px;
+  left: 20px;
   background-color: #444444;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
