@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   ModalBackground,
   ModalContent,
@@ -8,6 +8,7 @@ import {
   Title,
   InputHint,
   ErrorText,
+  CharacterCount,
 } from "./AddTaskModal.styles";
 
 interface AddTaskModalProps {
@@ -18,36 +19,15 @@ interface AddTaskModalProps {
 export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   const [taskName, setTaskName] = useState("");
   const [error, setError] = useState("");
-  const [placeholder, setPlaceholder] = useState(
-    "take vitamins, duolingo lesson..."
-  );
-
-  // Dynamic placeholder suggestions
-  useEffect(() => {
-    const placeholders = [
-      "take vitamins",
-      "feed the cat",
-      "lock the door",
-      "complete a Duolingo lesson",
-      "exercise for 30 minutes",
-      "water the plants",
-      "read a book",
-      "meditate for 10 minutes",
-      "write in journal",
-      "plan tomorrow's tasks",
-    ];
-    const interval = setInterval(() => {
-      const randomPlaceholder =
-        placeholders[Math.floor(Math.random() * placeholders.length)];
-      setPlaceholder(randomPlaceholder);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const maxLength = 50;
 
   const handleSubmit = () => {
     if (!taskName || taskName.trim().length < 3) {
       setError("Please enter a more descriptive task.");
+      return;
+    }
+    if (taskName.length > maxLength) {
+      setError(`Task name must be less than ${maxLength} characters.`);
       return;
     }
     onAddTask(taskName);
@@ -56,16 +36,10 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
     onClose();
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSubmit();
-    }
-  };
-
   return (
     <ModalBackground>
       <ModalContent>
-        <Title>Set a reminder to...</Title>
+        <Title>I need to remind to</Title>
 
         <Input
           type="text"
@@ -74,12 +48,14 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
             setTaskName(e.target.value);
             setError("");
           }}
-          onKeyPress={handleKeyPress}
-          placeholder={placeholder}
+          placeholder="E.g., take vitamins, lock the door..."
+          maxLength={maxLength}
         />
+        <CharacterCount>
+          {taskName.length}/{maxLength}
+        </CharacterCount>
         <InputHint>
-          Describe the task as an action. Example: "take vitamins", "lock the
-          door"
+          Describe the task as an action. E.g., "take vitamins"
         </InputHint>
         {error && <ErrorText>{error}</ErrorText>}
 

@@ -10,6 +10,7 @@ import { Container } from "./styles/Layout.styles";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles/GlobalStyles";
 import { Task } from "./types/TaskPops";
+import {} from "uuid";
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -65,6 +66,10 @@ export function App() {
     );
   };
 
+  const handleDeleteTask = (taskId: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -80,6 +85,7 @@ export function App() {
               completedTime={task.completedTime}
               onComplete={() => handleCompleteTask(task.id)}
               onUndo={() => handleUndoTask(task.id)}
+              onDelete={() => handleDeleteTask(task.id)}
             />
           ))}
         </Container>

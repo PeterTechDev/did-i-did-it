@@ -4,28 +4,22 @@ import styled from "styled-components";
 export const Card = styled.div<{ completed: boolean }>`
   border-radius: 20px;
   padding: 20px;
-  background-color: ${({ completed }) =>
-    completed
-      ? "#3A86FF"
-      : "#333333"}; /* Blue for completed, lighter dark gray for not completed */
-  color: ${({ completed }) =>
-    completed
-      ? "#FFBE0B"
-      : "#FF006E"}; /* Yellow for completed text, pink otherwise */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow for better separation */
+  background-color: ${({ completed }) => (completed ? "#3A86FF" : "#333333")};
+  color: ${({ completed }) => (completed ? "#FFBE0B" : "#FF006E")};
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   border: 1px solid #444444;
   text-align: center;
-  position: relative; /* Needed for absolute positioning of the button */
-  min-width: 280px;
-  max-width: 100%;
+  position: relative;
+  width: 280px;
 
   @media (min-width: 768px) {
-    max-width: 350px;
+    width: 350px;
   }
 `;
 
 export const TaskText = styled.p`
   font-size: 14px;
+  margin: 0 auto;
   margin-bottom: 8px;
 `;
 
@@ -67,29 +61,34 @@ export const Button = styled.button`
   }
 `;
 
-export const CancelButton = styled.button`
+export const SettingsButton = styled.button`
   position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 6px;
-  background-color: #ff006e;
-  color: #ffffff;
+  top: 0px;
+  left: 0px;
+  background: transparent;
   border: none;
-  border-radius: 50%;
+  font-size: 18px;
   cursor: pointer;
-  font-size: 12px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+`;
+
+export const DropdownMenu = styled.div`
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  background-color: #444444;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100px;
+`;
+
+export const DropdownOption = styled.div`
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
 
   &:hover {
-    background-color: #fb5607;
-  }
-
-  &:active {
-    transform: scale(0.98);
+    background-color: #ff006e;
   }
 `;
 

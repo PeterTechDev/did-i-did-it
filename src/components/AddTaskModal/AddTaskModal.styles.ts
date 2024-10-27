@@ -1,3 +1,4 @@
+// src/components/AddTaskModal.styles.ts
 import styled from "styled-components";
 
 export const ModalBackground = styled.div`
@@ -10,16 +11,6 @@ export const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.3s ease-in-out; /* Smooth transition */
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 `;
 
 export const ModalContent = styled.div`
@@ -30,16 +21,6 @@ export const ModalContent = styled.div`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: #ffffff;
-  animation: slideUp 0.4s ease; /* Slide up animation */
-
-  @keyframes slideUp {
-    from {
-      transform: translateY(30px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
 `;
 
 export const Title = styled.h2`
@@ -75,6 +56,12 @@ export const ErrorText = styled.p`
   margin-top: 5px;
 `;
 
+export const CharacterCount = styled.p`
+  font-size: 12px;
+  color: #9e9e9e;
+  margin-top: 5px;
+`;
+
 export const ButtonContainer = styled.div`
   margin-top: 20px;
   display: flex;
@@ -89,7 +76,6 @@ export const Button = styled.button<{ primary?: boolean }>`
   cursor: pointer;
   background-color: ${({ primary }) => (primary ? "#FB5607" : "#FF006E")};
   color: #ffffff;
-  width: 110px;
 
   &:hover {
     opacity: 0.9;
