@@ -15,6 +15,7 @@ import { Task } from "./types/TaskPops";
 import { v4 as uuidv4 } from "uuid";
 import "./i18n";
 import { AddTaskButton } from "./components/AddTaskButton";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -122,6 +123,7 @@ export default function App() {
             onClose={() => setIsModalOpen(false)}
           />
         )}
+        <ScrollToTopButton />
       </div>
     </ThemeProvider>
   );
