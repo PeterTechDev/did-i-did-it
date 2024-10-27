@@ -10,17 +10,21 @@ export const Card = styled.div<{ completed: boolean }>`
   border: 1px solid #444444;
   text-align: center;
   position: relative;
-  width: 120px;
-  height: 180px;
+  width: 110px;
+  height: 160px;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 768px) {
-    width: 350px;
+    height: 150px;
+
+    width: 200px;
   }
 
   @media (min-width: 1024px) {
     width: 24%;
+    height: 120px;
+
     width: 280px;
   }
 `;
@@ -40,6 +44,7 @@ export const Status = styled.p<{ completed: boolean }>`
 export const CompletionTime = styled.div``;
 
 export const TimeText = styled.p`
+  margin: 0;
   font-size: 12px;
   color: #ffffff;
 `;
