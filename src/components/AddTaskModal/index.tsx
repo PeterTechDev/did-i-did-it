@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ModalBackground,
   ModalContent,
@@ -19,7 +19,33 @@ interface AddTaskModalProps {
 export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   const [taskName, setTaskName] = useState("");
   const [error, setError] = useState("");
+  const [placeholder, setPlaceholder] = useState(
+    "take vitamins, duolingo lesson..."
+  );
   const maxLength = 50;
+
+  // Dynamic placeholder suggestions
+  useEffect(() => {
+    const placeholders = [
+      "take vitamins",
+      "lock the front door",
+      "complete a Duolingo lesson",
+      "exercise for 30 minutes",
+      "take medicine",
+      "water the plants",
+      "read 5 pages of a book",
+      "meditate for 10 minutes",
+      "write in journal",
+      "plan tomorrow's tasks",
+    ];
+    const interval = setInterval(() => {
+      const randomPlaceholder =
+        placeholders[Math.floor(Math.random() * placeholders.length)];
+      setPlaceholder(randomPlaceholder);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = () => {
     if (!taskName || taskName.trim().length < 3) {
@@ -48,7 +74,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
             setTaskName(e.target.value);
             setError("");
           }}
-          placeholder="E.g., take vitamins, lock the door..."
+          placeholder={placeholder}
           maxLength={maxLength}
         />
         <CharacterCount>

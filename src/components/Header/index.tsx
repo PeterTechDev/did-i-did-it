@@ -21,7 +21,8 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 20px;
   background-color: #242424;
-  margin-bottom: 20px;
+  margin: 5px auto 20px auto;
+  width: 360px;
 `;
 
 const Title = styled.h1`

@@ -76,6 +76,7 @@ export const Button = styled.button<{ primary?: boolean }>`
   cursor: pointer;
   background-color: ${({ primary }) => (primary ? "#FB5607" : "#FF006E")};
   color: #ffffff;
+  width: 90px;
 
   &:hover {
     opacity: 0.9;

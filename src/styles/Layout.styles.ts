@@ -2,14 +2,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 1400px;
+  max-width: 90vw;
 
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap onto the next line */
-  justify-content: center; /* Center the items */
   gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     justify-content: flex-start;

@@ -10,17 +10,22 @@ export const Card = styled.div<{ completed: boolean }>`
   border: 1px solid #444444;
   text-align: center;
   position: relative;
-  width: 280px;
+  width: 120px;
+  height: 180px;
 
   @media (min-width: 768px) {
     width: 350px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 24%;
+    width: 280px;
   }
 `;
 
 export const TaskText = styled.p`
   font-size: 14px;
-  margin: 0 auto;
-  margin-bottom: 8px;
+  margin: 20px auto 8px auto;
 `;
 
 export const Status = styled.p<{ completed: boolean }>`
@@ -63,12 +68,13 @@ export const Button = styled.button`
 
 export const SettingsButton = styled.button`
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: -5px;
+  left: -15px;
   background: transparent;
   border: none;
   font-size: 18px;
   cursor: pointer;
+  outline: none;
 `;
 
 export const DropdownMenu = styled.div`
