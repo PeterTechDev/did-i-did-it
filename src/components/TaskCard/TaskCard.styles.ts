@@ -10,7 +10,7 @@ export const Card = styled.div<{ completed: boolean }>`
   border: 1px solid #444444;
   text-align: center;
   position: relative;
-  width: 110px;
+  width: 105px;
   height: 160px;
   display: flex;
   flex-direction: column;
