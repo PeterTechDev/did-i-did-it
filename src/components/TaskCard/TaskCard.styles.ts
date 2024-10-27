@@ -80,6 +80,8 @@ export const SettingsButton = styled.button`
   border: none;
   font-size: 18px;
   cursor: pointer;
+  outline: none;
+  border: none;
 `;
 
 export const DropdownMenu = styled.div`

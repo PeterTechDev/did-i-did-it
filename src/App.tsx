@@ -45,7 +45,10 @@ export function App() {
           ? {
               ...task,
               completed: true,
-              completedTime: new Date().toLocaleTimeString("en-US"),
+              completedTime: new Date().toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
             }
           : task
       )
