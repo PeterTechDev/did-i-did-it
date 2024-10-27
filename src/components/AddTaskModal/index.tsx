@@ -24,7 +24,6 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   const [placeholder, setPlaceholder] = useState("");
   const maxLength = 21;
 
-  // Sugestões de placeholder dinâmico
   useEffect(() => {
     const placeholders = [
       t("placeholder.takeVitamins"),
@@ -64,7 +63,6 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
     onClose();
   };
 
-  // Função para detectar o Enter pressionado
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -81,12 +79,12 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
           type="text"
           value={taskName}
           onChange={(e) => {
-            setTaskName(e.target.value);
+            setTaskName(e.target.value.toLocaleLowerCase);
             setError("");
           }}
           placeholder={placeholder}
           maxLength={maxLength}
-          onKeyDown={handleKeyPress} // Detecta o Enter
+          onKeyDown={handleKeyPress}
         />
         <CharacterCount>
           {taskName.length}/{maxLength}
