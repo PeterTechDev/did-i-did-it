@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { TaskCard } from "./components/TaskCard";
 import { AddTaskModal } from "./components/AddTaskModal";
 import { Header } from "./components/Header";
+import Instruction from "./components/Instructions";
+import InfoModal from "./components/InfoModal";
 import {
   loadTasksFromLocalStorage,
   saveTasksToLocalStorage,
@@ -10,11 +12,11 @@ import { Container } from "./styles/Layout.styles";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles/GlobalStyles";
 import { Task } from "./types/TaskPops";
-import {} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import "./i18n";
 import { AddTaskButton } from "./components/AddTaskButton";
 
-export function App() {
+export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,14 +35,14 @@ export function App() {
 
   const handleAddTask = (taskName: string) => {
     const newTask: Task = {
-      id: tasks.length + 1,
+      id: uuidv4(),
       name: taskName,
       completed: false,
     };
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
-  const handleCompleteTask = (taskId: number) => {
+  const handleCompleteTask = (taskId: string) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === taskId
@@ -57,7 +59,7 @@ export function App() {
     );
   };
 
-  const handleUndoTask = (taskId: number) => {
+  const handleUndoTask = (taskId: string) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === taskId
@@ -71,7 +73,7 @@ export function App() {
     );
   };
 
-  const handleDeleteTask = (taskId: number) => {
+  const handleDeleteTask = (taskId: string) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
@@ -80,22 +82,28 @@ export function App() {
       <GlobalStyles />
       <div>
         <Header />
-
         <AddTaskButton onClick={() => setIsModalOpen(true)} />
-        <Container>
-          {tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              task={task.name}
-              completed={task.completed}
-              completedTime={task.completedTime}
-              onComplete={() => handleCompleteTask(task.id)}
-              onUndo={() => handleUndoTask(task.id)}
-              onDelete={() => handleDeleteTask(task.id)}
-            />
-          ))}
-        </Container>
-
+        <InfoModal
+          isFirstVisit={localStorage.getItem("isFirstVisit") !== "false"}
+        />
+        {/* Display modal with button and first visit control */}
+        {tasks.length < 1 ? (
+          <Instruction />
+        ) : (
+          <Container>
+            {tasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                task={task.name}
+                completed={task.completed}
+                completedTime={task.completedTime}
+                onComplete={() => handleCompleteTask(task.id)}
+                onUndo={() => handleUndoTask(task.id)}
+                onDelete={() => handleDeleteTask(task.id)}
+              />
+            ))}
+          </Container>
+        )}
         {isModalOpen && (
           <AddTaskModal
             onAddTask={handleAddTask}
@@ -106,5 +114,3 @@ export function App() {
     </ThemeProvider>
   );
 }
-
-export default App;

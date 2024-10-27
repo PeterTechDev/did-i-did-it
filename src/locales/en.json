@@ -15,6 +15,13 @@
     "completedAt": "Completed at {{time}}",
     "markAsDone": "Mark as Done"
   },
+  "about": {
+    "openButton": "About the App",
+    "title": "About Daily Reminder",
+    "purpose": "This app helps you keep track of simple daily tasks, reminding you to complete them each day.",
+    "resetInfo": "All tasks will automatically reset at midnight, so you can start each new day with a fresh checklist.",
+    "closeButton": "Close"
+  },
   "errors": {
     "moreDescriptiveTask": "Please enter a more descriptive task.",
     "taskMaxLength": "Task name must be less than {{maxLength}} characters."

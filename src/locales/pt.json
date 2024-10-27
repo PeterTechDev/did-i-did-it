@@ -15,6 +15,25 @@
     "completedAt": "Concluído às {{time}}",
     "markAsDone": "Marcar como Concluído"
   },
+  "about": {
+    "openButton": "Sobre o App",
+    "title": "Sobre o Lembrete Diário",
+    "purpose": "Este aplicativo ajuda você a acompanhar tarefas diárias simples, lembrando você de completá-las todos os dias.",
+    "resetInfo": "Todas as tarefas serão reiniciadas automaticamente à meia-noite, para que você possa começar o próximo dia com um novo checklist.",
+    "closeButton": "Fechar"
+  },
+
+  "instruction": {
+    "welcome": "Bem-vindo ao Checklist Diário!",
+    "hint": "Para começar, clique em 'Adicionar' e registre sua primeira atividade diária."
+  },
+
+  "welcomeModal": {
+    "title": "Bem-vindo ao Lembrete Diário",
+    "purpose": "Este aplicativo ajuda você a acompanhar tarefas diárias simples e se lembrar de concluí-las todos os dias.",
+    "resetInfo": "As tarefas serão reiniciadas automaticamente todos os dias à meia-noite, permitindo que você comece do zero a cada novo dia."
+  },
+
   "errors": {
     "moreDescriptiveTask": "Por favor, insira uma tarefa mais descritiva.",
     "taskMaxLength": "O nome da tarefa deve ter menos de {{maxLength}} caracteres."
