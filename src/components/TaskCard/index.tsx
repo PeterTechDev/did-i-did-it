@@ -33,6 +33,7 @@ export function TaskCard({
 
   const handleUndo = () => {
     if (window.confirm("Are you sure you want to undo this task?")) {
+      setShowDropdown(!showDropdown);
       onUndo();
     }
   };
@@ -40,6 +41,7 @@ export function TaskCard({
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this task?")) {
       onDelete();
+      setShowDropdown(!showDropdown);
     }
   };
 
