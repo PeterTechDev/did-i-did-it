@@ -10,7 +10,7 @@ export const Card = styled.div<{ completed: boolean }>`
   text-align: center;
   position: relative;
   width: 110px;
-  height: 160px;
+  height: 190px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -29,7 +29,7 @@ export const Card = styled.div<{ completed: boolean }>`
 `;
 
 export const TaskText = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   margin: 20px auto 8px auto;
 `;
 
