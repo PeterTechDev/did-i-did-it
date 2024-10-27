@@ -57,15 +57,14 @@ export const Overlay = styled.div`
 `;
 
 export const TriggerButton = styled.button`
-  padding: 6px 12px;
-  font-size: 24px;
+  padding: 3px 8px;
+  font-size: 20px;
   color: #ffffff;
   background-color: #3772ff;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   display: block;
-  margin: 10px auto;
   line-height: 1;
   border: 1px solid #fff;
 

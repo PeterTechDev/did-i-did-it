@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 30px;
-`;
+export const ButtonContainer = styled.div``;
 
 export const Button = styled.button`
   padding: 10px 20px;

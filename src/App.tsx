@@ -82,11 +82,21 @@ export default function App() {
       <GlobalStyles />
       <div>
         <Header />
-        <AddTaskButton onClick={() => setIsModalOpen(true)} />
-        <InfoModal
-          isFirstVisit={localStorage.getItem("isFirstVisit") !== "false"}
-        />
-        {/* Display modal with button and first visit control */}
+        <div
+          className="buttons-container"
+          style={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
+          <AddTaskButton onClick={() => setIsModalOpen(true)} />
+          <InfoModal
+            isFirstVisit={localStorage.getItem("isFirstVisit") !== "false"}
+          />
+          {/* Display modal with button and first visit control */}
+        </div>
         {tasks.length < 1 ? (
           <Instruction />
         ) : (
