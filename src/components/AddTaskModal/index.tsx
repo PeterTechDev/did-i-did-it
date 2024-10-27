@@ -48,7 +48,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   }, [t]);
 
   const handleSubmit = () => {
-    const trimmedTask = taskName.trim();
+    const trimmedTask = taskName.trim().toLocaleLowerCase();
     if (!trimmedTask || trimmedTask.length < 3) {
       setError(t("errors.moreDescriptiveTask"));
       return;
@@ -79,7 +79,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
           type="text"
           value={taskName}
           onChange={(e) => {
-            setTaskName(e.target.value.toLocaleLowerCase);
+            setTaskName(e.target.value);
             setError("");
           }}
           placeholder={placeholder}
