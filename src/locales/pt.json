@@ -1,0 +1,34 @@
+{
+  "modal": {
+    "title": "Lembrete Diário",
+    "cancel": "Cancelar",
+    "add": "Adicionar",
+    "inputHint": "Descreva a tarefa como uma ação. Ex.: 'tomar vitaminas'",
+    "undoConfirmation": "Tem certeza de que deseja desfazer esta tarefa?",
+    "deleteConfirmation": "Tem certeza de que deseja excluir esta tarefa?",
+    "didI": "Eu já {{task}}?",
+    "titleAddNewTask": "Eu preciso lembrar de...",
+    "yes": "Sim",
+    "no": "Não",
+    "undo": "Desfazer",
+    "delete": "Excluir",
+    "completedAt": "Concluído às {{time}}",
+    "markAsDone": "Marcar como Concluído"
+  },
+  "errors": {
+    "moreDescriptiveTask": "Por favor, insira uma tarefa mais descritiva.",
+    "taskMaxLength": "O nome da tarefa deve ter menos de {{maxLength}} caracteres."
+  },
+  "placeholder": {
+    "takeVitamins": "tomar vitaminas",
+    "lockFrontDoor": "trancar a porta da frente",
+    "completeDuolingoLesson": "fazer uma lição do Duolingo",
+    "exerciseFor30Minutes": "exercitar por 30 minutos",
+    "takeMedicine": "tomar remédio",
+    "waterThePlants": "regar as plantas",
+    "read5Pages": "ler 5 páginas de um livro",
+    "meditateFor10Minutes": "meditar por 10 minutos",
+    "writeInJournal": "escrever no diário",
+    "planTomorrow": "planejar as tarefas de amanhã"
+  }
+}

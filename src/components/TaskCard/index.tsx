@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   TaskText,
@@ -10,7 +12,6 @@ import {
   DropdownMenu,
   DropdownOption,
 } from "./TaskCard.styles";
-import { useState } from "react";
 
 interface TaskCardProps {
   task: string;
@@ -30,26 +31,29 @@ export function TaskCard({
   onDelete,
 }: TaskCardProps) {
   const [showDropdown, setShowDropdown] = useState(false);
+  const { t } = useTranslation();
 
   const handleUndo = () => {
-    if (window.confirm("Are you sure you want to undo this task?")) {
-      setShowDropdown(!showDropdown);
+    if (window.confirm(t("modal.undoConfirmation"))) {
       onUndo();
+      setShowDropdown(false);
     }
   };
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this task?")) {
+    if (window.confirm(t("modal.deleteConfirmation"))) {
       onDelete();
-      setShowDropdown(!showDropdown);
+      setShowDropdown(false);
     }
   };
 
   return (
     <Card completed={completed}>
-      <TaskText>Did I {task}?</TaskText>
+      <TaskText>{t("modal.didI", { task })}</TaskText>
 
-      <Status completed={completed}>{completed ? "YES" : "NO"}</Status>
+      <Status completed={completed}>
+        {completed ? t("modal.yes") : t("modal.no")}
+      </Status>
 
       <SettingsButton onClick={() => setShowDropdown(!showDropdown)}>
         ⚙️
@@ -58,19 +62,27 @@ export function TaskCard({
       {showDropdown && (
         <DropdownMenu>
           {completed && (
-            <DropdownOption onClick={handleUndo}>Undo</DropdownOption>
+            <DropdownOption onClick={handleUndo}>
+              {t("modal.undo")}
+            </DropdownOption>
           )}
-          <DropdownOption onClick={handleDelete}>Delete</DropdownOption>
+          <DropdownOption onClick={handleDelete}>
+            {t("modal.delete")}
+          </DropdownOption>
         </DropdownMenu>
       )}
 
       <Footer>
         {completed && (
           <CompletionTime>
-            <TimeText>Completed at {completedTime}</TimeText>
+            <TimeText>
+              {t("modal.completedAt", { time: completedTime })}
+            </TimeText>
           </CompletionTime>
         )}
-        {!completed && <Button onClick={onComplete}>Mark as Done</Button>}
+        {!completed && (
+          <Button onClick={onComplete}>{t("modal.markAsDone")}</Button>
+        )}
       </Footer>
     </Card>
   );

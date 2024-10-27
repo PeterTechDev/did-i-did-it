@@ -17,10 +17,14 @@ export const ModalContent = styled.div`
   background-color: #333333;
   padding: 30px;
   border-radius: 15px;
-  width: 320px;
+  width: 260px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: #ffffff;
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -76,7 +80,8 @@ export const Button = styled.button<{ primary?: boolean }>`
   cursor: pointer;
   background-color: ${({ primary }) => (primary ? "#FB5607" : "#FF006E")};
   color: #ffffff;
-  width: 90px;
+  width: 100px;
+  text-align: center;
 
   &:hover {
     opacity: 0.9;

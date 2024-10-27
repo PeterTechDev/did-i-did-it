@@ -1,0 +1,34 @@
+{
+  "modal": {
+    "title": "Daily Reminder",
+    "cancel": "Cancel",
+    "add": "Add",
+    "inputHint": "Describe the task as an action. E.g., 'take vitamins'",
+    "undoConfirmation": "Are you sure you want to undo this task?",
+    "deleteConfirmation": "Are you sure you want to delete this task?",
+    "didI": "Did I {{task}}?",
+    "titleAddNewTask": "I need to remind to...",
+    "yes": "Yes",
+    "no": "No",
+    "undo": "Undo",
+    "delete": "Delete",
+    "completedAt": "Completed at {{time}}",
+    "markAsDone": "Mark as Done"
+  },
+  "errors": {
+    "moreDescriptiveTask": "Please enter a more descriptive task.",
+    "taskMaxLength": "Task name must be less than {{maxLength}} characters."
+  },
+  "placeholder": {
+    "takeVitamins": "take vitamins",
+    "lockFrontDoor": "lock the front door",
+    "completeDuolingoLesson": "complete a Duolingo lesson",
+    "exerciseFor30Minutes": "exercise for 30 minutes",
+    "takeMedicine": "take medicine",
+    "waterThePlants": "water the plants",
+    "read5Pages": "read 5 pages of a book",
+    "meditateFor10Minutes": "meditate for 10 minutes",
+    "writeInJournal": "write in journal",
+    "planTomorrow": "plan tomorrow's tasks"
+  }
+}

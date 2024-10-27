@@ -11,6 +11,8 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles/GlobalStyles";
 import { Task } from "./types/TaskPops";
 import {} from "uuid";
+import "./i18n";
+import { AddTaskButton } from "./components/AddTaskButton";
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -77,8 +79,9 @@ export function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div>
-        <Header onOpenModal={() => setIsModalOpen(true)} />
+        <Header />
 
+        <AddTaskButton onClick={() => setIsModalOpen(true)} />
         <Container>
           {tasks.map((task) => (
             <TaskCard

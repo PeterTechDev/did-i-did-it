@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   ModalBackground,
   ModalContent,
@@ -17,27 +18,27 @@ interface AddTaskModalProps {
 }
 
 export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
+  const { t } = useTranslation();
   const [taskName, setTaskName] = useState("");
   const [error, setError] = useState("");
-  const [placeholder, setPlaceholder] = useState(
-    "take vitamins, duolingo lesson..."
-  );
+  const [placeholder, setPlaceholder] = useState("");
   const maxLength = 20;
 
-  // Dynamic placeholder suggestions
+  // Sugestões de placeholder dinâmico
   useEffect(() => {
     const placeholders = [
-      "take vitamins",
-      "lock the front door",
-      "complete a Duolingo lesson",
-      "exercise for 30 minutes",
-      "take medicine",
-      "water the plants",
-      "read 5 pages of a book",
-      "meditate for 10 minutes",
-      "write in journal",
-      "plan tomorrow's tasks",
+      t("placeholder.takeVitamins"),
+      t("placeholder.lockFrontDoor"),
+      t("placeholder.completeDuolingoLesson"),
+      t("placeholder.exerciseFor30Minutes"),
+      t("placeholder.takeMedicine"),
+      t("placeholder.waterThePlants"),
+      t("placeholder.read5Pages"),
+      t("placeholder.meditateFor10Minutes"),
+      t("placeholder.writeInJournal"),
+      t("placeholder.planTomorrow"),
     ];
+
     const interval = setInterval(() => {
       const randomPlaceholder =
         placeholders[Math.floor(Math.random() * placeholders.length)];
@@ -45,18 +46,19 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [t]);
 
   const handleSubmit = () => {
-    if (!taskName || taskName.trim().length < 3) {
-      setError("Please enter a more descriptive task.");
+    const trimmedTask = taskName.trim();
+    if (!trimmedTask || trimmedTask.length < 3) {
+      setError(t("errors.moreDescriptiveTask"));
       return;
     }
-    if (taskName.length > maxLength) {
-      setError(`Task name must be less than ${maxLength} characters.`);
+    if (trimmedTask.length > maxLength) {
+      setError(t("errors.taskMaxLength", { maxLength }));
       return;
     }
-    onAddTask(taskName);
+    onAddTask(trimmedTask);
     setTaskName("");
     setError("");
     onClose();
@@ -65,7 +67,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   return (
     <ModalBackground>
       <ModalContent>
-        <Title>I need to remind to</Title>
+        <Title>{t("modal.titleAddNewTask")}</Title>
 
         <Input
           type="text"
@@ -80,15 +82,13 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
         <CharacterCount>
           {taskName.length}/{maxLength}
         </CharacterCount>
-        <InputHint>
-          Describe the task as an action. E.g., "take vitamins"
-        </InputHint>
+        <InputHint>{t("modal.inputHint")}</InputHint>
         {error && <ErrorText>{error}</ErrorText>}
 
         <ButtonContainer>
-          <Button onClick={onClose}>Cancel</Button>
+          <Button onClick={onClose}>{t("modal.cancel")}</Button>
           <Button primary onClick={handleSubmit}>
-            Add
+            {t("modal.add")}
           </Button>
         </ButtonContainer>
       </ModalContent>

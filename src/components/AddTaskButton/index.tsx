@@ -1,29 +1,14 @@
-// src/components/AddTaskButton.tsx
-import styled from "styled-components";
+import { t } from "i18next";
+import { Button, ButtonContainer } from "./AddTaskButton";
 
 interface AddTaskButtonProps {
   onClick: () => void;
 }
 
 export function AddTaskButton({ onClick }: AddTaskButtonProps) {
-  return <Button onClick={onClick}>+ Add Task</Button>;
+  return (
+    <ButtonContainer>
+      <Button onClick={onClick}>{t("modal.add")}</Button>
+    </ButtonContainer>
+  );
 }
-
-// Styled Component
-const Button = styled.button`
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #fb5607;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #ff006e;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-`;
