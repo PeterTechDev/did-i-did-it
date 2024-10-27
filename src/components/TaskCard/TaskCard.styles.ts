@@ -12,6 +12,8 @@ export const Card = styled.div<{ completed: boolean }>`
   position: relative;
   width: 120px;
   height: 180px;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: 768px) {
     width: 350px;
@@ -35,9 +37,7 @@ export const Status = styled.p<{ completed: boolean }>`
   color: ${({ completed }) => (completed ? "#FFBE0B" : "#FF006E")};
 `;
 
-export const CompletionTime = styled.div`
-  margin-top: 10px;
-`;
+export const CompletionTime = styled.div``;
 
 export const TimeText = styled.p`
   font-size: 12px;
@@ -75,6 +75,7 @@ export const SettingsButton = styled.button`
   font-size: 18px;
   cursor: pointer;
   outline: none;
+  border: none;
 `;
 
 export const DropdownMenu = styled.div`
@@ -105,4 +106,5 @@ export const Footer = styled.div`
   align-items: center;
   bottom: 0;
   width: 100%;
+  justify-self: flex-end;
 `;

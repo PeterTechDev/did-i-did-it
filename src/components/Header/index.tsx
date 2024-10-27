@@ -22,7 +22,7 @@ const HeaderContainer = styled.div`
   padding: 20px;
   background-color: #242424;
   margin: 5px auto 20px auto;
-  width: 360px;
+  width: 320px;
 `;
 
 const Title = styled.h1`

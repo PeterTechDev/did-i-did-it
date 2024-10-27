@@ -22,7 +22,7 @@ export function AddTaskModal({ onAddTask, onClose }: AddTaskModalProps) {
   const [placeholder, setPlaceholder] = useState(
     "take vitamins, duolingo lesson..."
   );
-  const maxLength = 50;
+  const maxLength = 20;
 
   // Dynamic placeholder suggestions
   useEffect(() => {
