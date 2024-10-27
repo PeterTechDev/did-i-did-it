@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Card,
@@ -32,6 +32,24 @@ export function TaskCard({
 }: TaskCardProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const { t } = useTranslation();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Fecha o menu suspenso ao clicar fora dele
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleUndo = () => {
     if (window.confirm(t("modal.undoConfirmation"))) {
@@ -60,7 +78,7 @@ export function TaskCard({
       </SettingsButton>
 
       {showDropdown && (
-        <DropdownMenu>
+        <DropdownMenu ref={dropdownRef}>
           {completed && (
             <DropdownOption onClick={handleUndo}>
               {t("modal.undo")}
